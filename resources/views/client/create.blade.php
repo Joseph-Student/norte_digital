@@ -30,27 +30,43 @@
             </div>
         </div>
         <div class="ibox-content">
-            <form class="form-horizontal" action="/clients" method="post">
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+            <form class="form-horizontal" action="/products" method="POST">
                 @csrf
-                @method('PUT')
+                @method('POST')
                 <p>Sign in today for more expirience.</p>
-                <div class="form-group"><label class="col-lg-2 control-label">Email</label>
-
-                    <div class="col-lg-10"><input type="email" placeholder="Email" class="form-control"> <span class="help-block m-b-none">Example block-level help text here.</span>
-                    </div>
-                </div>
-                <div class="form-group"><label class="col-lg-2 control-label">Password</label>
-
-                    <div class="col-lg-10"><input type="password" placeholder="Password" class="form-control"></div>
-                </div>
                 <div class="form-group">
-                    <div class="col-lg-offset-2 col-lg-10">
-                        <div class="i-checks"><label> <div class="icheckbox_square-green" style="position: relative;"><input type="checkbox" style="position: absolute; opacity: 0;"><ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;"></ins></div><i></i> Remember me </label></div>
+                    <label class="col-lg-2 control-label">Nombre</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Nombre" class="form-control" name="name" value="{{ old('name') }}">
+                        <span class="help-block m-b-none">Example block-level help text here.</span>
                     </div>
                 </div>
                 <div class="form-group">
+                    <label class="col-lg-2 control-label">Precio</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Precio" class="form-control" name="price" value="{{ old('price') }}">
+                        <span class="help-block m-b-none">Example block-level help text here.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">Descripcion</label>
+                    <div class="col-lg-10">
+                        <input type="text" placeholder="Descripcion" class="form-control" name="description" value="{{ old('description') }}">
+                        <span class="help-block m-b-none">Example block-level help text here.</span>
+                    </div>
+                </div>
+                <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
-                        <button class="btn btn-sm btn-white" type="submit">Sign in</button>
+                        <button class="btn btn-sm btn-white" type="submit">Guardar</button>
                     </div>
                 </div>
             </form>

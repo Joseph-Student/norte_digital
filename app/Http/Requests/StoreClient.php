@@ -28,4 +28,20 @@ class StoreClient extends FormRequest
             'description' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre es requerido',
+            'description.required' => 'La descripcion es requerida'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'name' => 'Nombre del cliente',
+            'description' => 'Descripcion'
+        ];
+    }
 }

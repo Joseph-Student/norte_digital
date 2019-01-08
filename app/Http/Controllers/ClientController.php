@@ -38,21 +38,17 @@ class ClientController extends Controller
      */
     public function store(StoreClient $request)
     {
-        $validated = $request->validated();
-        if ($validated) {
-            $client = new Client;
-            $client->name = $request->name;
-            $client->description = $request->description;
+        $request->validated();
+        $client = new Client;
+        $client->name = $request->name;
+        $client->description = $request->description;
 
-            $client->save();
+        $client->save();
 
-            $products = Product::all();
-            $client->products()->attach($products);
+        $products = Product::all();
+        $client->products()->attach($products);
 
-            return redirect('/clients');
-        }
-        return redirect('/clients/create')
-            ->withErrors($validated);
+        return redirect()->route('clients.index');
     }
 
     /**
@@ -84,13 +80,13 @@ class ClientController extends Controller
      * @param  \App\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(StoreClient $request, Client $client)
     {
-        $client = Client::find($client);
-        $client->name = $request->name;
-        $client.save();
+        $request->validated();
+        $client->name = $request->input('name');
+        $client->save();
+        return redirect()->route('clients.edit', ['client' => $client]);
 
-        return 'Success';
     }
 
     /**

@@ -38,20 +38,16 @@ class ProductController extends Controller
      */
     public function store(StoreProduct $request)
     {
-        $validated = $request->validated();
-        if ($validated){
-            $product = new Product;
-            $product->name = $request->name;
-            $product->price = $request->price;
-            $product->description = $request->description;
+        $request->validated();
+        $product = new Product;
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('description');
 
-            $product->save();
+        $product->save();
 
-            return redirect('/products');
-        }
-        return redirect('/products/create')
-            ->withErrors($validated);
-    }
+        return redirect()->route('products.index');
+}
 
     /**
      * Display the specified resource.

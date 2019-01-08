@@ -29,4 +29,23 @@ class StoreProduct extends FormRequest
             'description' => 'required|max:255'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'El nombre requerido',
+            'name.max' => 'El nombre no puede contener mas de 255 caracteres',
+            'price.required' => 'El precio es requerido',
+            'description.required' => 'La descripcion es requerida'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+          'name' => 'Nombre',
+          'price' => 'Precio',
+          'description' => 'Descipcion'
+        ];
+    }
 }
