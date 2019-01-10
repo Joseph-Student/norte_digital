@@ -27,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('product.create');
+        $form = new StoreProduct;
+        return view('product.create', ['form' => $form]);
     }
 
     /**
@@ -38,7 +39,6 @@ class ProductController extends Controller
      */
     public function store(StoreProduct $request)
     {
-        $request->validated();
         $product = new Product;
         $product->name = $request->input('name');
         $product->price = $request->input('price');
@@ -78,7 +78,7 @@ class ProductController extends Controller
      * @param  \App\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(StoreProduct $request, Product $product)
     {
         //
     }

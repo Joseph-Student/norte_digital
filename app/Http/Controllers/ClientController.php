@@ -38,10 +38,9 @@ class ClientController extends Controller
      */
     public function store(StoreClient $request)
     {
-        $request->validated();
         $client = new Client;
-        $client->name = $request->name;
-        $client->description = $request->description;
+        $client->name = $request->input('name');
+        $client->description = $request->input('description');
 
         $client->save();
 

@@ -32,8 +32,8 @@ class StoreClient extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre es requerido',
-            'description.required' => 'La descripcion es requerida'
+            'name.required' => 'El :attribute es requerido',
+            'description.required' => 'La :attribute es requerida'
         ];
     }
 

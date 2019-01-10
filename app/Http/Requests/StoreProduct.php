@@ -33,10 +33,10 @@ class StoreProduct extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'El nombre requerido',
-            'name.max' => 'El nombre no puede contener mas de 255 caracteres',
-            'price.required' => 'El precio es requerido',
-            'description.required' => 'La descripcion es requerida'
+            'name.required' => ':attribute requerido',
+            'name.max' => ':attribute no puede contener mas de 255 caracteres',
+            'price.required' => 'El :attribute es requerido',
+            'description.required' => 'La :attribute es requerida'
         ];
     }
 
