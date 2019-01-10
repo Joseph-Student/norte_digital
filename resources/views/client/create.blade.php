@@ -57,6 +57,7 @@
                         <span class="help-block m-b-none">Example block-level help text here.</span>
                     </div>
                 </div>
+                @include('product._form')
                 <div class="form-group">
                     <div class="col-lg-offset-2 col-lg-10">
                         <button class="btn btn-sm btn-white" type="submit">Guardar</button>
