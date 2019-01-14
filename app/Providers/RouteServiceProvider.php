@@ -23,9 +23,15 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('product', function ($value) {
+            list($id, $name) = explode('/', base64_decode($value), 2);
+            return \App\Product::where([
+                ['id', $id],
+                ['name', $name],
+            ])->first() ?? abort(404);
+        });
     }
 
     /**
