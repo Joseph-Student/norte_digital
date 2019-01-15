@@ -54,13 +54,19 @@ class ApiProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Product  $product
-     * @return \Illuminate\Http\Response
+     * @param StoreProduct $request
+     * @param  \App\Product $product
+     * @return ProductResource
      */
     public function update(StoreProduct $request, Product $product)
     {
-        //
+        $product->name = $request->input('name');
+        $product->price = $request->input('price');
+        $product->description = $request->input('descrption');
+
+        $product->save();
+
+        return new ProductResource($product);
     }
 
     /**
@@ -71,6 +77,12 @@ class ApiProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return response()->json([
+            'data' => null,
+            'status' => true,
+            'message' => 'Producto eliminado de manera exitosa.'
+        ]);
     }
 }
